@@ -12,5 +12,5 @@ TODO
 
 # Prereqs
  - [Installera CircuitPython](https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi)
- - [Aktivera SPI](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-spi)
+ - [Aktivera SPI](https://www.raspberrypi-spy.co.uk/2014/08/enabling-the-spi-interface-on-the-raspberry-pi/)
  - [Installera libb för TLC59711](https://github.com/adafruit/Adafruit_CircuitPython_TLC59711)
