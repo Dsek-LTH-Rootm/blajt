@@ -14,7 +14,7 @@ import adafruit_tlc59711
 # Define SPI bus connected to chip.
 # You only need the clock and MOSI (output) line to use this chip.
 spi = busio.SPI(board.SCK, MOSI=board.MOSI)
-pixels = adafruit_tlc59711.TLC59711(spi, pixel_count=16)
+pixels = adafruit_tlc59711.TLC59711(spi)
 
 # examples how to set the pixels:
 # range:
@@ -43,6 +43,15 @@ def set_color(pixel, red, green, blue):
 
 def set_all(red, green, blue):
     pixels.set_pixel_all((red, green, blue))
+    pixels.show()
+
+def set_all_colors(red, green, blue, white_down, white_up):
+    pixels.r0 = 65535 - blue*255
+    pixels.b1 = 65535 - white_up*255
+    pixels.b2 = 65535 - white_down*255
+    pixels.r2 = 65535 - green*255
+    pixels.b3 = 65535 - red*255
+    pixels.show()
 
 def cycle_colors():
 
