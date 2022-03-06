@@ -52,4 +52,4 @@ def set_all_colors():
     return template("Setting all pixels to colors ({{red}}, {{green}}, {{blue}}, {{white_down}}, {{white_up}})", red=red, green=green, blue=blue, white_down=white_down, white_up=white_up)
 
 
-run(host='192.168.7.241', port=8080)
+run(host='0.0.0.0', port=8080)
