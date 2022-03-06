@@ -1,0 +1,5 @@
+leds[0][2] = blå= leds.r0
+leds[1][0] = vit uppe = leds.b1
+leds[2][0] = vit nere = leds.b2
+leds[2][2] = grön= leds.r2
+leds[3][0] = röd= leds.b3
