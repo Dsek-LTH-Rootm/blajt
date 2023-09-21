@@ -3,9 +3,12 @@
 from bottle import run, get, post, request, route, template
 import controller
 
+import json
+
+
 @route('/')
 def index():
-   return '''
+    return '''
       <form action="/set_all_colors" method="post">
         Red: <input name="red" type="number" /></br>
         Green: <input name="green" type="number" /></br>
@@ -16,26 +19,34 @@ def index():
       </form>
    '''
 
+
 @post('/cycle_colors')
 def cycle():
-    #cycle_colors()
+    # cycle_colors()
     return "Cycling colors"
+
 
 @post('/clear')
 def clear():
     controller.clear()
     return "Clearing all colors"
 
+
 @post('/set_all_colors')
 def set_all_colors():
-    red = int(request.forms.get('red'))
-    green = int(request.forms.get('green'))
-    blue = int(request.forms.get('blue'))
-    white_down = int(request.forms.get('white_down'))
-    white_up = int(request.forms.get('white_up'))
+    red = int(request.forms.get('red', 0))
+    green = int(request.forms.get('green', 0))
+    blue = int(request.forms.get('blue', 0))
+    white_down = int(request.forms.get('white_down', 0))
+    white_up = int(request.forms.get('white_up', 0))
 
     controller.set_all_colors(red, green, blue, white_down, white_up)
     return template("Setting all pixels to colors ({{red}}, {{green}}, {{blue}}, {{white_down}}, {{white_up}})", red=red, green=green, blue=blue, white_down=white_down, white_up=white_up)
+
+
+@get('/get_all_colors')
+def get_all_colors():
+    return json.dumps(controller.get_all_colors())
 
 
 run(host='0.0.0.0', port=8080)

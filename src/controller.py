@@ -37,10 +37,21 @@ pixels = adafruit_tlc59711.TLC59711(spi)
 
 # there are a bunch of other ways to set pixel.
 # have a look at the other examples.
+current_colors = {'red': 0, 'green': 0,
+                  'blue': 0, 'white_down': 0, 'white_up': 0}
+
+
 def normalize(color):
     return 65535 - color*255
 
+
 def set_all_colors(red, green, blue, white_down, white_up):
+    current_colors['red'] = red
+    current_colors['green'] = green
+    current_colors['blue'] = blue
+    current_colors['white_down'] = white_down
+    current_colors['white_up'] = white_up
+
     pixels.r0 = normalize(blue)
     pixels.b1 = normalize(white_up)
     pixels.b2 = normalize(white_down)
@@ -48,9 +59,14 @@ def set_all_colors(red, green, blue, white_down, white_up):
     pixels.b3 = normalize(red)
     pixels.show()
 
+
+def get_all_colors():
+    return current_colors
+
+
 def clear():
     set_all_colors(0, 0, 0, 0, 0)
 
+
 def cycle_colors():
     pixels.show()
-
